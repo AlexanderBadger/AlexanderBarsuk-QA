@@ -1,1 +1,0 @@
-# AlexanderBarsuk-QA
