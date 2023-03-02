@@ -1,13 +1,29 @@
+import com.tngtech.java.junit.dataprovider.DataProvider;
+import com.tngtech.java.junit.dataprovider.DataProviderRunner;
+import com.tngtech.java.junit.dataprovider.UseDataProvider;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
+import ru.yandex.qatools.ashot.AShot;
+import ru.yandex.qatools.ashot.shooting.ShootingStrategies;
+import ru.yandex.qatools.ashot.Screenshot;
 
+import javax.imageio.ImageIO;
+import java.io.File;
+import java.io.IOException;
 import java.time.Duration;
+import java.util.Arrays;
+import java.util.Collection;
 
 import static org.junit.Assert.assertEquals;
+
+@RunWith(DataProviderRunner.class)
 
 public class FirstTest {
     private WebDriver driver;
@@ -21,8 +37,18 @@ public class FirstTest {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));
     }
 
+    @DataProvider
+    public static Object[][] data() {
+        return new Object[][] {
+                {"4000000000000002", "CONFIRMED"},
+                {"5555555555554444", "DECLINED BY ISSUING BANK"}
+        };
+
+        }
+
     @Test
-    public void confirmedPayment() {
+    @UseDataProvider("data")
+    public void confirmedPayment(String CardNum, String PayRes) {
         driver.get(baseUrl);
         String Order_number = (String) driver.findElement(By.id("order-number")).getText();
         String Unlimint_Payment_Page = (String) driver.getTitle();
@@ -30,7 +56,7 @@ public class FirstTest {
         String currency = (String) driver.findElement(By.id("currency")).getText();
         driver.findElement(By.id("input-card-number")).click();
         driver.findElement(By.id("input-card-number")).clear();
-        driver.findElement(By.id("input-card-number")).sendKeys("4000000000000002");
+        driver.findElement(By.id("input-card-number")).sendKeys(CardNum);
         driver.findElement(By.id("input-card-holder")).click();
         driver.findElement(By.id("input-card-holder")).clear();
         driver.findElement(By.id("input-card-holder")).sendKeys("BORIS");
@@ -44,6 +70,21 @@ public class FirstTest {
         driver.findElement(By.id("action-submit")).click();
         driver.findElement(By.id("success")).click();
         assertEquals(Order_number, driver.findElement(By.xpath("//*[@id=\"payment-item-ordernumber\"]/div[2]")).getText());
+        assertEquals(PayRes, driver.findElement(By.xpath("//*[@id=\"payment-item-status\"]/div[2]")).getText().toUpperCase());
+    }
+
+    @Test
+    public void screenshotCVC() throws IOException {
+        driver.get(baseUrl);
+
+        Actions action = new Actions(driver);
+
+        WebElement CVChint = driver.findElement(By.xpath("//*[@id=\"cvc-hint-toggle\"]"));
+        action.moveToElement(CVChint).click().build().perform();
+        WebElement CVCbubble = driver.findElement(By.xpath("//*[@id=\"cvc-hint-bubble\"]"));
+        action.moveToElement(CVCbubble).click().build().perform();
+        Screenshot screenshot = new AShot().shootingStrategy(ShootingStrategies.viewportPasting(1000)).takeScreenshot(driver);
+        ImageIO.write(screenshot.getImage(), "jpg", new File("target/1.jpg"));
     }
 
     @After
