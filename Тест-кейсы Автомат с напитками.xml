@@ -1,0 +1,1247 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite>
+	<id>S34</id>
+	<name>Master</name>
+	<description></description>
+	<sections>
+		<section>
+		<name>Барсук</name>
+		<description></description>
+						
+		<cases>
+									
+						<case>
+				<id>C4556</id>
+				<title>Проверка содержания экранов приложения на соответствие заявленному в документации</title>
+												<template>Test Case (Steps)</template>
+																<type>Other</type>
+																<priority>Critical</priority>
+																<estimate></estimate>
+																								<references></references> 
+																				<custom>
+										<automation_type><id>0</id><value> None</value></automation_type>
+										<steps_separated><step>
+<index>1</index><content>-Запустить приложение VendorMachine</content><expected>-Открыт первый экран 
+-Отображается 3 вида напитков с возможными объемами и ценами: 
+Coffee - 0.2л 50р;
+NUKA COLA - 0.2л 50р, 0.5л 70р, 1л 85р;
+SLURM - 0.2л 70р, 0.5л 90р, 1л 110р;
+NUKA COLA и SLURM имеют возможность выбора объема для покупки на розлив от 0.2 до 10л.
+![](index.php?/attachments/get/4464)
+
+</expected></step>
+<step>
+<index>2</index><content>-Выбрать позицию Coffe 0.2л 50р
+-Нажать кнопку &quot;перейти к оплате&quot;, чтобы перейти во второе окно</content><expected>-Открыто второе окно
+-В окне отображается: 
+   список выбранных напитков;
+   поле для внесения купюр с номиналом 1,2,5,10,50,100,500,1000,5000;
+   поле для ввода промо-кода на скидку и кнопку &quot;пересчитать&quot; для его применения;
+   поле с указанием суммы заказа в рублях;
+   поле с указанием внесенной суммы;
+   поле с указанием сколько еще нужно внести;
+   кнопка &quot;оплатить&quot; для совершения оплаты и перехода на третий экран.
+![](index.php?/attachments/get/4465)
+
+   
+</expected></step>
+<step>
+<index>3</index><content>-Нажать кнопку &quot;50&quot; в поле &quot;Купюры,р&quot; для внесения необходимой суммы оплаты
+-Нажать кнопку &quot;оплатить&quot; для перехода на третий экран
+</content><expected>-Открыто третье окно
+-В окне отображается:
+   список покупок
+   итоговая сумма
+   сумма со скидкой
+   количество внесенных денег
+   сдача с детализацией (сколько монет какого достоинства выдано пользователю)
+![](index.php?/attachments/get/4466)
+</expected></step>
+</steps_separated>
+									</custom>
+							</case>
+												
+						<case>
+				<id>C4557</id>
+				<title>Покупка выбранного напитка</title>
+												<template>Test Case (Steps)</template>
+																<type>Other</type>
+																<priority>Critical</priority>
+																<estimate></estimate>
+																								<references></references> 
+																				<custom>
+										<automation_type><id>0</id><value> None</value></automation_type>
+										<preconds>Запущено приложение VendorMachine</preconds>
+										<steps_separated><step>
+<index>1</index><content>-Выбрать Coffee 0.2л 50р</content><expected>-В поле выбранных напитков появилось 1 строка: 
+Coffee 0.2л 50р, 
+
+Сумма заказа соответствует цене выбранного напитка.
+![](index.php?/attachments/get/4467)
+
+</expected></step>
+<step>
+<index>2</index><content>-Нажать кнопку &quot;перейти к оплате&quot;</content><expected>-Открыто второе окно с оплатой покупки 
+-Товар, его объем и цена соответствует выбранному
+![](index.php?/attachments/get/4468)
+</expected></step>
+<step>
+<index>3</index><content>-В поле &quot;купюры, р&quot; нажать кнопку &quot;50&quot; для внесения необходимой суммы для оплаты</content><expected>-В поле &quot;уже внесли:&quot; высветилась внесенная сумма
+-Снизу поля &quot;уже внесли:&quot; появилось сообщение &quot;можно оплатить!&quot;
+![](index.php?/attachments/get/4469)
+</expected></step>
+<step>
+<index>4</index><content>-Нажать кнопку &quot;оплатить&quot;</content><expected>-Открыто третье окно с описанием совершенной покупки
+-В окне корректно отображается:
+   список покупок
+   итоговая сумма
+   сумма со скидкой
+   количество внесенных денег
+   сдача с детализацией (сколько монет какого достоинства выдано пользователю)
+![](index.php?/attachments/get/4470)
+</expected></step>
+</steps_separated>
+									</custom>
+							</case>
+												
+						<case>
+				<id>C4558</id>
+				<title>Проверка соотвтествия цен  в столбцах выбора напитка  с ценой в списке добавленных и суммы заказа.</title>
+												<template>Test Case (Steps)</template>
+																<type>Other</type>
+																<priority>Critical</priority>
+																<estimate></estimate>
+																								<references></references> 
+																				<custom>
+										<automation_type><id>0</id><value> None</value></automation_type>
+										<preconds>Запущено приложение VendorMachine</preconds>
+										<steps_separated><step>
+<index>1</index><content>-Выбираем Coffee 0.2л 50р, NUKA COLA 0.2л 50р, NUKA COLA 0.5л 70р, NUKA COLA 1л 85р, SLURM 0.2л 70р,</content><expected>-В поле выбранных напитков появилось 5 строк: 
+Coffee 0.2л 50р,
+NUKA COLA 0.2л 50р,
+NUKA COLA 0.5л 70р,
+NUKA COLA 1л 85р,
+SLURM 0.2л 70р
+
+Сумма заказа соответствует сумме цен выбранных напитков.
+![](index.php?/attachments/get/4428)
+
+
+
+</expected></step>
+</steps_separated>
+									</custom>
+							</case>
+												
+						<case>
+				<id>C4559</id>
+				<title>Проверка работы панели внесения купюр.</title>
+												<template>Test Case (Steps)</template>
+																<type>Other</type>
+																<priority>Critical</priority>
+																<estimate></estimate>
+																								<references></references> 
+																				<custom>
+										<automation_type><id>0</id><value> None</value></automation_type>
+										<preconds>Запущено приложение VendorMachine</preconds>
+										<steps_separated><step>
+<index>1</index><content>-Выбираем SLURM на розлив 10.л по 990р (с учетом скидки) 5 раз. (Необходимо, чтобы сумма покупок была максимально возможной, для проверки всех кнопок поля)</content><expected>В поле выбранных напитков появилось 5 строк: 
+SLURM 10,0л 990р,
+SLURM 10,0л 990р,
+SLURM 10,0л 990р,
+SLURM 10,0л 990р,
+SLURM 10,0л 990р,
+Сумма покупок составляет 4950р.
+![](index.php?/attachments/get/4454)
+
+</expected></step>
+<step>
+<index>2</index><content>-Нажимаем кнопку &quot;перейти к оплате&quot; для перехода в окно оплаты
+![](index.php?/attachments/get/4455)
+
+</content><expected>-Перешли в окно оплаты
+![](index.php?/attachments/get/4456)
+</expected></step>
+<step>
+<index>3</index><content>-По очереди нажимаем на кнопки &quot;1&quot;,&quot;2&quot;,&quot;5&quot;,&quot;10&quot;,&quot;50&quot;,&quot;100&quot;,&quot;500&quot;,&quot;1000&quot; на панели &quot;купюры,р&quot;</content><expected>-При нажатии каждой кнопки, ее значение суммируется с предыдущим и выводится на панели &quot;уже внесли:&quot;
+-Внесена сумма 1668 Р.
+![](index.php?/attachments/get/4457)
+</expected></step>
+<step>
+<index>4</index><content>-Обнуляем поле &quot;уже внесли:&quot; нажатием на кнопку &quot;крестик&quot; справа.
+![](index.php?/attachments/get/4458)
+</content><expected>- Поле &quot;уже внесли:&quot; обнулено</expected></step>
+<step>
+<index>5</index><content>-Нажимаем на кнопку &quot;5000&quot; на панели &quot;купюры,р&quot;</content><expected>-В поле &quot;уже внесли:&quot; указана сумма 5000р.</expected></step>
+</steps_separated>
+									</custom>
+							</case>
+												
+						<case>
+				<id>C4560</id>
+				<title>Проверка стоимости разливной NUKA KOLA объемом 0,2л&lt;=V&lt;0,5л</title>
+												<template>Test Case (Steps)</template>
+																<type>Other</type>
+																<priority>Critical</priority>
+																<estimate></estimate>
+																								<references></references> 
+																				<custom>
+										<automation_type><id>0</id><value> None</value></automation_type>
+										<preconds>-Запущено приложение VendorMachine
+-Если 0.2 &lt;= V &lt; 0.5, то стоимость 0.1л рассчитывается от
+стоимости 0.2л, т.е. стоимость = (фиксированная стоимость 0.2л
+напитка)/2 * V/0.1
+-Фиксированная стоимость NUKA KOLA 0.2л = 50р.</preconds>
+										<steps_separated><step>
+<index>1</index><content>-Нажимаем на стрелку , чтобы раскрыть вкладку &quot;купить на розлив&quot;
+![](index.php?/attachments/get/4430)
+
+</content><expected>-Вкладка &quot;купить на розлив&quot; раскрыта
+![](index.php?/attachments/get/4431)
+
+</expected></step>
+<step>
+<index>2</index><content>-С помощью ползунка выбираем объем 0.2л и нажимаем кнопку &quot;готово&quot; для добавления позиции
+-Повторяем предыдущий шаг с объемом 0.3л и 0.4л
+
+Согласно тех.документации, их стоимость должна составлять 50р, 75р, 100р соответственно.</content><expected>- Появились 3 строки с напитком NUKA KOLA 0.2л, 0.3л, 0.4л.
+- Стоимость напитков составляет 50р, 75р, 100р соответственно.
+![](index.php?/attachments/get/4432)
+</expected></step>
+</steps_separated>
+									</custom>
+							</case>
+												
+						<case>
+				<id>C4561</id>
+				<title>Проверка стоимости на розлив SLURM объемом 0,2л&lt;=V&lt;0,5л</title>
+												<template>Test Case (Steps)</template>
+																<type>Other</type>
+																<priority>Critical</priority>
+																<estimate></estimate>
+																								<references></references> 
+																				<custom>
+										<automation_type><id>0</id><value> None</value></automation_type>
+										<preconds>-Запущено приложение VendorMachine
+-Если 0.2 &lt;= V &lt; 0.5, то стоимость 0.1л рассчитывается от
+стоимости 0.2л, т.е. стоимость = (фиксированная стоимость 0.2л
+напитка)/2 * V/0.1
+-Фиксированная стоимость SLURM 0.2л = 70р.</preconds>
+										<steps_separated><step>
+<index>1</index><content>-Нажимаем на стрелку , чтобы раскрыть вкладку &quot;купить на розлив&quot;
+![](index.php?/attachments/get/4433)
+
+
+</content><expected>-Вкладка &quot;купить на розлив&quot; раскрыта
+![](index.php?/attachments/get/4434)
+
+
+
+</expected></step>
+<step>
+<index>2</index><content>-С помощью ползунка выбираем объем 0.2л и нажимаем кнопку &quot;готово&quot; для добавления позиции
+-Повторяем предыдущий шаг с объемом 0.3л и 0.4л
+
+Согласно тех.документации, их стоимость должна составлять 70р, 105р, 140р соответственно.</content><expected>- Появились 3 строки с напитком SLURM 0.2л, 0.3л, 0.4л.
+- Стоимость напитков составляет 70р, 105р, 140р соответственно.
+![](index.php?/attachments/get/4435)
+
+
+</expected></step>
+</steps_separated>
+									</custom>
+							</case>
+												
+						<case>
+				<id>C4562</id>
+				<title>Проверка стоимости разливной NUKA KOLA объемом 0,5л&lt;=V&lt;1,0л</title>
+												<template>Test Case (Steps)</template>
+																<type>Other</type>
+																<priority>Critical</priority>
+																<estimate></estimate>
+																								<references></references> 
+																				<custom>
+										<automation_type><id>0</id><value> None</value></automation_type>
+										<preconds>-Запущено приложение VendorMachine
+-Если 0.5 &lt;= V &lt; 1.0, то стоимость 0.1л рассчитывается от
+стоимости 0.5л, т.е. стоимость = (фиксированная стоимость 0.5л
+напитка) / 5 * V/0.1
+-Фиксированная стоимость NUKA KOLA 0.5л = 70р.</preconds>
+										<steps_separated><step>
+<index>1</index><content>-Нажимаем на стрелку , чтобы раскрыть вкладку &quot;купить на розлив&quot;
+![](index.php?/attachments/get/4430)
+
+</content><expected>-Вкладка &quot;купить на розлив&quot; раскрыта
+![](index.php?/attachments/get/4431)
+
+</expected></step>
+<step>
+<index>2</index><content>-С помощью ползунка выбираем объем 0.5л и нажимаем кнопку &quot;готово&quot; для добавления позиции
+-Повторяем предыдущий шаг с объемом 0.7л и 0.9л
+
+Согласно тех.документации, их стоимость должна составлять 70р, 98р, 126р соответственно.</content><expected>- Появились 3 строки с напитком NUKA KOLA 0.5л, 0.7л, 0.9л.
+- Стоимость напитков составляет 70р, 98р, 126р соответственно.
+![](index.php?/attachments/get/4436)
+
+
+</expected></step>
+</steps_separated>
+									</custom>
+							</case>
+												
+						<case>
+				<id>C4563</id>
+				<title>Проверка стоимости разливной SLURM объемом 0,5л&lt;=V&lt;1,0л</title>
+												<template>Test Case (Steps)</template>
+																<type>Other</type>
+																<priority>Critical</priority>
+																<estimate></estimate>
+																								<references></references> 
+																				<custom>
+										<automation_type><id>0</id><value> None</value></automation_type>
+										<preconds>-Запущено приложение VendorMachine
+-Если 0.5 &lt;= V &lt; 1.0, то стоимость 0.1л рассчитывается от
+стоимости 0.5л, т.е. стоимость = (фиксированная стоимость 0.5л
+напитка) / 5 * V/0.1
+-Фиксированная стоимость SLURM 0.5л = 90р.</preconds>
+										<steps_separated><step>
+<index>1</index><content>-Нажимаем на стрелку , чтобы раскрыть вкладку &quot;купить на розлив&quot;
+
+![](index.php?/attachments/get/4437)
+
+
+</content><expected>-Вкладка &quot;купить на розлив&quot; раскрыта
+![](index.php?/attachments/get/4438)
+
+
+
+</expected></step>
+<step>
+<index>2</index><content>-С помощью ползунка выбираем объем 0.5л и нажимаем кнопку &quot;готово&quot; для добавления позиции
+-Повторяем предыдущий шаг с объемом 0.7л и 0.9л
+
+Согласно тех.документации, их стоимость должна составлять 90р, 126р, 162р соответственно.</content><expected>- Появились 3 строки с напитком SLURM 0.5л, 0.7л, 0.9л.
+- Стоимость напитков составляет 90р, 126р, 162р соответственно.
+![](index.php?/attachments/get/4439)
+
+
+
+
+</expected></step>
+</steps_separated>
+									</custom>
+							</case>
+												
+						<case>
+				<id>C4564</id>
+				<title>Проверка стоимости разливной NUKA KOLA объемом V&gt;=1,0л</title>
+												<template>Test Case (Steps)</template>
+																<type>Other</type>
+																<priority>Critical</priority>
+																<estimate></estimate>
+																								<references></references> 
+																				<custom>
+										<automation_type><id>0</id><value> None</value></automation_type>
+										<preconds>-Запущено приложение VendorMachine
+-Если V &gt;= 1.0л, то стоимость 0.1л рассчитывается от стоимости
+1л, т.е.
+стоимость = (фиксированная стоимость 1л напитка) / 10 * V/0.1
+-Фиксированная стоимость NUKA KOLA 1,0л = 85р.</preconds>
+										<steps_separated><step>
+<index>1</index><content>-Нажимаем на стрелку , чтобы раскрыть вкладку &quot;купить на розлив&quot;
+![](index.php?/attachments/get/4430)
+
+</content><expected>-Вкладка &quot;купить на розлив&quot; раскрыта
+![](index.php?/attachments/get/4431)
+
+</expected></step>
+<step>
+<index>2</index><content>-С помощью ползунка выбираем объем 1,0л и нажимаем кнопку &quot;готово&quot; для добавления позиции
+-Повторяем предыдущий шаг с объемом 1,5л и 1,9л
+
+Согласно тех.документации, их стоимость должна составлять 85р, 128р, 162р соответственно.</content><expected>- Появились 3 строки с напитком NUKA KOLA 1,0л, 1,5л, 1,9л.
+- Стоимость напитков составляет 85р, 128р, 162р соответственно.
+![](index.php?/attachments/get/4441)
+
+
+
+</expected></step>
+</steps_separated>
+									</custom>
+							</case>
+												
+						<case>
+				<id>C4565</id>
+				<title>Проверка стоимости разливной SLURM объемом V&gt;=1,0л</title>
+												<template>Test Case (Steps)</template>
+																<type>Other</type>
+																<priority>Critical</priority>
+																<estimate></estimate>
+																								<references></references> 
+																				<custom>
+										<automation_type><id>0</id><value> None</value></automation_type>
+										<preconds>-Запущено приложение VendorMachine
+-Если V &gt;= 1.0л, то стоимость 0.1л рассчитывается от стоимости
+1л, т.е.
+стоимость = (фиксированная стоимость 1л напитка) / 10 * V/0.1
+-Фиксированная стоимость SLURM 1,0л = 110р.</preconds>
+										<steps_separated><step>
+<index>1</index><content>-Нажимаем на стрелку , чтобы раскрыть вкладку &quot;купить на розлив&quot;
+
+![](index.php?/attachments/get/4437)
+
+
+</content><expected>-Вкладка &quot;купить на розлив&quot; раскрыта
+![](index.php?/attachments/get/4438)
+
+
+
+</expected></step>
+<step>
+<index>2</index><content>-С помощью ползунка выбираем объем 1,0л и нажимаем кнопку &quot;готово&quot; для добавления позиции
+-Повторяем предыдущий шаг с объемом 1,5л и 1,9л
+
+Согласно тех.документации, их стоимость должна составлять 110р, 165р, 209р соответственно.</content><expected>- Появились 3 строки с напитком SLURM 1,0л, 1,5л, 1,9л.
+- Стоимость напитков составляет 110р, 165р, 209р соответственно.
+![](index.php?/attachments/get/4443)
+
+
+
+
+
+
+</expected></step>
+</steps_separated>
+									</custom>
+							</case>
+												
+						<case>
+				<id>C4566</id>
+				<title>Проверка стоимости разливной NUKA KOLA объемом 2&lt;=V&lt;5л со скидкой 5%</title>
+												<template>Test Case (Steps)</template>
+																<type>Other</type>
+																<priority>Critical</priority>
+																<estimate></estimate>
+																								<references></references> 
+																				<custom>
+										<automation_type><id>0</id><value> None</value></automation_type>
+										<preconds>-Запущено приложение VendorMachine
+
+Если V &gt;= 1.0л, то стоимость 0.1л рассчитывается от стоимости
+1л, т.е.
+стоимость = (фиксированная стоимость 1л напитка) / 10 * V/0.1
+Фиксированная стоимость NUKA KOLA 1,0л = 85р.
+Согласно документации, скидки действуют на напитки, кроме кофе: [2л; 5л) - скидка 5%</preconds>
+										<steps_separated><step>
+<index>1</index><content>-Нажимаем на стрелку , чтобы раскрыть вкладку &quot;купить на розлив&quot;
+![](index.php?/attachments/get/4444)
+
+
+</content><expected>-Вкладка &quot;купить на розлив&quot; раскрыта
+![](index.php?/attachments/get/4445)
+
+</expected></step>
+<step>
+<index>2</index><content>-С помощью ползунка выбираем объем 2,0л и нажимаем кнопку &quot;готово&quot; для добавления позиции
+-Повторяем предыдущий шаг с объемом 3,0л и 4,9л
+
+Согласно тех.документации, их стоимость с учетом скидки 5%, должна составлять 161р, 242р, 396р соответственно.</content><expected>- Появились 3 строки с напитком NUKA KOLA 2,0л, 3,0л, 4,9л.
+- Стоимость напитков составляет 161р, 242р, 396р соответственно.
+![](index.php?/attachments/get/4441)
+
+
+
+</expected></step>
+</steps_separated>
+									</custom>
+							</case>
+												
+						<case>
+				<id>C4567</id>
+				<title>Проверка стоимости разливной SLURM объемом 2&lt;=V&lt;5л со скидкой 5%</title>
+												<template>Test Case (Steps)</template>
+																<type>Other</type>
+																<priority>Critical</priority>
+																<estimate></estimate>
+																								<references></references> 
+																				<custom>
+										<automation_type><id>0</id><value> None</value></automation_type>
+										<preconds>-Запущено приложение VendorMachine
+
+Если V &gt;= 1.0л, то стоимость 0.1л рассчитывается от стоимости
+1л, т.е.стоимость = (фиксированная стоимость 1л напитка) / 10 * V/0.1
+Фиксированная стоимость SLURM 1,0л = 110р.
+Согласно документации, скидки действуют на напитки, кроме кофе: [2л; 5л) - скидка 5%</preconds>
+										<steps_separated><step>
+<index>1</index><content>-Нажимаем на стрелку , чтобы раскрыть вкладку &quot;купить на розлив&quot;
+![](index.php?/attachments/get/4447)
+
+
+
+</content><expected>-Вкладка &quot;купить на розлив&quot; раскрыта
+![](index.php?/attachments/get/4448)
+
+
+
+</expected></step>
+<step>
+<index>2</index><content>-С помощью ползунка выбираем объем 2,0л и нажимаем кнопку &quot;готово&quot; для добавления позиции
+-Повторяем предыдущий шаг с объемом 3,0л и 4,9л
+
+Согласно тех.документации, их стоимость с учетом скидки 5%, должна составлять 209р, 313р, 512р соответственно.</content><expected>- Появились 3 строки с напитком SLURM 2,0л, 3,0л, 4,9л.
+- Стоимость напитков составляет 209р, 313р, 512р соответственно.
+![](index.php?/attachments/get/4449)
+
+
+
+
+
+</expected></step>
+</steps_separated>
+									</custom>
+							</case>
+												
+						<case>
+				<id>C4568</id>
+				<title>Проверка стоимости разливной NUKA KOLA объемом 5&lt;=V&lt;=10л со скидкой 10%</title>
+												<template>Test Case (Steps)</template>
+																<type>Other</type>
+																<priority>Critical</priority>
+																<estimate></estimate>
+																								<references></references> 
+																				<custom>
+										<automation_type><id>0</id><value> None</value></automation_type>
+										<preconds>-Запущено приложение VendorMachine
+
+Если V &gt;= 1.0л, то стоимость 0.1л рассчитывается от стоимости
+1л, т.е.стоимость = (фиксированная стоимость 1л напитка) / 10 * V/0.1
+Фиксированная стоимость NUKA KOLA 1,0л = 85р.
+Согласно документации, скидки действуют на напитки, кроме кофе: [5л; 10л] - скидка 10%</preconds>
+										<steps_separated><step>
+<index>1</index><content>-Нажимаем на стрелку , чтобы раскрыть вкладку &quot;купить на розлив&quot;
+![](index.php?/attachments/get/4444)
+
+
+</content><expected>-Вкладка &quot;купить на розлив&quot; раскрыта
+![](index.php?/attachments/get/4445)
+
+</expected></step>
+<step>
+<index>2</index><content>-С помощью ползунка выбираем объем 5,0л и нажимаем кнопку &quot;готово&quot; для добавления позиции
+-Повторяем предыдущий шаг с объемом 7,0л и 10,0л
+
+Согласно тех.документации, их стоимость с учетом скидки 10%, должна составлять 382р, 535р, 765р соответственно.</content><expected>- Появились 3 строки с напитком NUKA KOLA 5,0л, 7,0л, 10,0л.
+- Стоимость напитков составляет 382р, 535р, 765р соответственно.
+
+![](index.php?/attachments/get/4453)
+
+
+
+
+</expected></step>
+</steps_separated>
+									</custom>
+							</case>
+												
+						<case>
+				<id>C4569</id>
+				<title>Проверка стоимости разливной SLURM объемом 5&lt;=V&lt;=10л со скидкой 10%</title>
+												<template>Test Case (Steps)</template>
+																<type>Other</type>
+																<priority>Critical</priority>
+																<estimate></estimate>
+																								<references></references> 
+																				<custom>
+										<automation_type><id>0</id><value> None</value></automation_type>
+										<preconds>-Запущено приложение VendorMachine
+
+Если V &gt;= 1.0л, то стоимость 0.1л рассчитывается от стоимости
+1л, т.е.стоимость = (фиксированная стоимость 1л напитка) / 10 * V/0.1
+Фиксированная стоимость SLURM 1,0л = 110р.
+Согласно документации, скидки действуют на напитки, кроме кофе: [5л; 10л] - скидка 10%</preconds>
+										<steps_separated><step>
+<index>1</index><content>-Нажимаем на стрелку , чтобы раскрыть вкладку &quot;купить на розлив&quot;
+![](index.php?/attachments/get/4450)
+
+
+
+</content><expected>-Вкладка &quot;купить на розлив&quot; раскрыта
+![](index.php?/attachments/get/4451)
+
+
+</expected></step>
+<step>
+<index>2</index><content>-С помощью ползунка выбираем объем 5,0л и нажимаем кнопку &quot;готово&quot; для добавления позиции
+-Повторяем предыдущий шаг с объемом 7,0л и 10,0л
+
+Согласно тех.документации, их стоимость с учетом скидки 10%, должна составлять 495р, 693р, 990р соответственно.</content><expected>- Появились 3 строки с напитком SLURM 5,0л, 7,0л, 10,0л.
+- Стоимость напитков составляет 382р, 535р, 765р соответственно.
+![](index.php?/attachments/get/4452)
+
+
+
+
+
+
+
+</expected></step>
+</steps_separated>
+									</custom>
+							</case>
+												
+						<case>
+				<id>C4570</id>
+				<title>Проверка применения промо-кода на скидку 15%</title>
+												<template>Test Case (Steps)</template>
+																<type>Other</type>
+																<priority>Critical</priority>
+																<estimate></estimate>
+																								<references></references> 
+																				<custom>
+										<automation_type><id>0</id><value> None</value></automation_type>
+										<preconds>Запущено приложение VendorMachine
+Тестовый промо-код : 5555</preconds>
+										<steps_separated><step>
+<index>1</index><content>Выбираем Coffe 0.2л 50р, NUKA KOLA 0.2л 50р, SLURM 0.2л 70р. </content><expected>В поле выбранных напитков появилось 3 строки: 
+Coffe 0.2л 50р, 
+NUKA KOLA 0.2л 50р, 
+SLURM 0.2л 70р. 
+Сумма заказа соответствует сумме цен выбранных напитков и равна 190Р.
+![](index.php?/attachments/get/4423)
+</expected></step>
+<step>
+<index>2</index><content>-Нажать на кнопку &quot;перейти к оплате&quot; для перехода на экран оплаты покупки</content><expected>-Открыто окно оплаты покупки
+-Отображается список добавленных товаров и сумма заказов
+![](index.php?/attachments/get/4459)
+</expected></step>
+<step>
+<index>3</index><content>-Нажать кнопку &quot;200&quot; на панели &quot;купюры,р&quot; 2 раза, чтобы внести сумму 200р.
+-В поле &quot;промокод:&quot; ввести &quot;5555&quot; и нажать кнопку &quot;Пересчитать&quot;</content><expected>-В поле &quot;уже внесли:&quot; отображается сумма 200р
+-Сумма заказа пересчитана с учетом скидки по промокоду и равна 161,5р(округляется приложением до 162р).</expected></step>
+<step>
+<index>4</index><content>-Нажать кнопку &quot;оплатить&quot;, чтобы провести оплату и перейти на экран с отчетом о покупке с чеком.</content><expected>-Покупка совершена
+-Перешли на экран отчета о покупке с чеком.
+![](index.php?/attachments/get/4460)
+</expected></step>
+</steps_separated>
+									</custom>
+							</case>
+												
+						<case>
+				<id>C4571</id>
+				<title>Проверка применения промо-кода на скидку 15% к товару с уже имеющейся скидкой</title>
+												<template>Test Case (Steps)</template>
+																<type>Other</type>
+																<priority>Critical</priority>
+																<estimate></estimate>
+																								<references></references> 
+																				<custom>
+										<automation_type><id>0</id><value> None</value></automation_type>
+										<preconds>Запущено приложение VendorMachine
+Тестовый промо-код : 5555</preconds>
+										<steps_separated><step>
+<index>1</index><content>-Выбираем на розлив NUKA COLA 3.0л, стоимость которого со скидкой 5% для напитков объема в диапазоне [2:5) согласно документации, равна 242р.</content><expected>-В поле выбранных напитков появилось строка: 
+NUKA KOLA 3.0л 242р, 
+ 
+Сумма заказа соответствует цене выбранного напитка и равна 242р.
+![](index.php?/attachments/get/4461)
+
+
+</expected></step>
+<step>
+<index>2</index><content>-Нажать на кнопку &quot;перейти к оплате&quot; для перехода на экран оплаты покупки</content><expected>-Открыто окно оплаты покупки
+-Отображается список добавленных товаров и сумма заказов
+![](index.php?/attachments/get/4462)
+
+</expected></step>
+<step>
+<index>3</index><content>-Нажать кнопку &quot;200&quot; 2 раза и &quot;50&quot; 1 раз на панели &quot;купюры,р&quot; , чтобы внести сумму 250р.
+-В поле &quot;промо-код:&quot; ввести &quot;5555&quot; и нажать кнопку &quot;Пересчитать&quot;</content><expected>-В поле &quot;уже внесли:&quot; отображается сумма 250р
+-Появилось оповещение о применении промо-кода
+-Сумма заказа пересчитана с учетом скидки по промо-коду и равна 206р.</expected></step>
+<step>
+<index>4</index><content>-Нажать кнопку &quot;оплатить&quot;, чтобы провести оплату и перейти на экран с отчетом о покупке с чеком.</content><expected>-Покупка совершена
+-Перешли на экран отчета о покупке с чеком.
+![](index.php?/attachments/get/4463)
+</expected></step>
+</steps_separated>
+									</custom>
+							</case>
+												
+						<case>
+				<id>C4572</id>
+				<title>Выбор одного типа напитка и одного объема более 1-го раза</title>
+												<template>Test Case (Steps)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																<estimate></estimate>
+																								<references></references> 
+																				<custom>
+										<automation_type><id>0</id><value> None</value></automation_type>
+										<preconds>Запущено приложение VendorMachine</preconds>
+										<steps_separated><step>
+<index>1</index><content>Выбираем Coffe 0.2л 50р 3 раза![](index.php?/attachments/get/4424)
+</content><expected>В поле выбранных напитков появилось 3 строки: 
+Coffe 0.2л 50р, 
+Coffe 0.2л 50р,
+Coffe 0.2л 50р
+Сумма заказа соответствует сумме цен выбранных напитков.
+
+</expected></step>
+</steps_separated>
+									</custom>
+							</case>
+												
+						<case>
+				<id>C4573</id>
+				<title>Выбор трех разных типов напитка одного объема</title>
+												<template>Test Case (Steps)</template>
+																<type>Other</type>
+																<priority>Critical</priority>
+																<estimate></estimate>
+																								<references></references> 
+																				<custom>
+										<automation_type><id>0</id><value> None</value></automation_type>
+										<preconds>Запущено приложение VendorMachine</preconds>
+										<steps_separated><step>
+<index>1</index><content>Выбираем Coffe 0.2л 50р, NUKA KOLA 0.2л 50р, SLURM 0.2л 70р. </content><expected>В поле выбранных напитков появилось 3 строки: 
+Coffe 0.2л 50р, 
+NUKA KOLA 0.2л 50р, 
+SLURM 0.2л 70р. 
+Сумма заказа соответствует сумме цен выбранных напитков.![](index.php?/attachments/get/4423)
+</expected></step>
+</steps_separated>
+									</custom>
+							</case>
+												
+						<case>
+				<id>C4574</id>
+				<title>Выбор максимального (Согласно док-ции = 5) количества заказов в очереди</title>
+												<template>Test Case (Steps)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																<estimate></estimate>
+																								<references></references> 
+																				<custom>
+										<automation_type><id>0</id><value> None</value></automation_type>
+										<preconds>Запущено приложение VendorMachine</preconds>
+										<steps_separated><step>
+<index>1</index><content>-Выбираем NUKA KOLA 0.2л 50р 5 раз.</content><expected>-В поле выбранных напитков появилось 5 строк: 
+NUKA KOLA 0.2л 50р, 
+NUKA KOLA 0.2л 50р,
+NUKA KOLA 0.2л 50р,
+NUKA KOLA 0.2л 50р,
+NUKA KOLA 0.2л 50р,
+
+Сумма заказа соответствует сумме цен выбранных напитков.
+![](index.php?/attachments/get/4426)
+
+</expected></step>
+</steps_separated>
+									</custom>
+							</case>
+												
+						<case>
+				<id>C4575</id>
+				<title>Выбор количества заказов в очереди больше максимального (Согласно док-ции = 5)</title>
+												<template>Test Case (Steps)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																<estimate></estimate>
+																								<references></references> 
+																				<custom>
+										<automation_type><id>0</id><value> None</value></automation_type>
+										<preconds>Запущено приложение VendorMachine</preconds>
+										<steps_separated><step>
+<index>1</index><content>-Выбираем NUKA KOLA 0.2л 50р 5 раз.</content><expected>-В поле выбранных напитков появилось 5 строк: 
+
+NUKA KOLA 0.2л 50р,
+NUKA KOLA 0.2л 50р,
+NUKA KOLA 0.2л 50р,
+NUKA KOLA 0.2л 50р,
+
+Сумма заказа соответствует сумме цен выбранных напитков.
+![](index.php?/attachments/get/4427)
+
+
+</expected></step>
+<step>
+<index>2</index><content>-Добавляем NUKA KOLA 0.2л 50р шестой раз</content><expected>-Шестая позиция не добавлена. 
+-Всплывает сообщение- &quot;Выбрано максимальное количество заказов в очереди (5)&quot;</expected></step>
+</steps_separated>
+									</custom>
+							</case>
+												
+						<case>
+				<id>C4576</id>
+				<title>Очистка списка выбранных напитков с помощью кнопки &quot;крестик&quot;</title>
+												<template>Test Case (Steps)</template>
+																<type>Other</type>
+																<priority>Critical</priority>
+																<estimate></estimate>
+																								<references></references> 
+																				<custom>
+										<automation_type><id>0</id><value> None</value></automation_type>
+										<preconds>Запущено приложение VendorMachine</preconds>
+										<steps_separated><step>
+<index>1</index><content>-Выбираем Coffe 0.2л 50р, NUKA KOLA 0.2л 50р, SLURM 0.2л 70р. 
+
+</content><expected>-В поле выбранных напитков появилось 3 строки: 
+Coffe 0.2л 50р, 
+NUKA KOLA 0.2л 50р, 
+SLURM 0.2л 70р. 
+
+</expected></step>
+<step>
+<index>2</index><content>-С помощью кнопки удаления позиции (крестик), удаляем все 3 позиции, чтобы список был пуст.![](index.php?/attachments/get/4425)</content><expected>-После удаления каждой позиции, список пуст.</expected></step>
+</steps_separated>
+									</custom>
+							</case>
+								</cases>
+							</section>
+			<section>
+		<name>Kaprilevskaya</name>
+		<description></description>
+						
+		<cases>
+									
+						<case>
+				<id>C4598</id>
+				<title>Проверка возможности выбрать каждый стандартный напиток</title>
+												<template>Test Case (Steps)</template>
+																<type>Functional</type>
+																<priority>Critical</priority>
+																<estimate></estimate>
+																								<references></references> 
+																				<custom>
+										<automation_type><id>0</id><value> None</value></automation_type>
+										<steps_separated><step>
+<index>1</index><content>В колонке Coffee нажать на кнопку “0.2 л 50 Р” и проверить правильность отображения данных в появившемся ниже списке.
+![](index.php?/attachments/get/4532)
+</content><expected>Поле с изображением пустого столика и надписью &quot;Этот столик еще ничего не заказал&quot; меняется на табличку с выбранным напитком и его параметрами. Данные с кнопки выбора напитка (Coffee “0.2 л 50 Р”) и данные в появившейся табличке совпадают.
+![](index.php?/attachments/get/4533)
+</expected></step>
+<step>
+<index>2</index><content>В колонке Nuka-Cola нажать на кнопку “0.2 л 50 Р” и проверить правильность отображения данных в списке.</content><expected>В табличку добавляется пункт Nuka-Cola “0.2 л 50 Р”. Данные с кнопки выбора напитка (Nuka-Cola “0.2 л 50 Р”) и данные в появившейся табличке совпадают.</expected></step>
+<step>
+<index>3</index><content>В колонке Nuka-Cola нажать на кнопку “0.5 л 70 Р” и проверить правильность отображения данных в списке.</content><expected>В табличку добавляется пункт Nuka-Cola “0.5 л 70 Р”. Данные с кнопки выбора напитка (Nuka-Cola “0.5 л 70 Р”) и данные в появившейся табличке совпадают.</expected></step>
+<step>
+<index>4</index><content>В колонке Slurm нажать на кнопку “0.2 л 70 Р” и проверить правильность отображения данных в списке. </content><expected>В табличку добавляется пункт Slurm “0.2 л 70 Р”. Данные с кнопки выбора напитка (Slurm “0.2 л 70 Р”) и данные в появившейся табличке совпадают.</expected></step>
+<step>
+<index>5</index><content>В колонке Slurm нажать на кнопку “0.5 л 90 Р” и проверить правильность отображения данных в списке. </content><expected>В табличку добавляется пункт Slurm “0.5 л 90 Р”. Данные с кнопки выбора напитка (Slurm “0.5 л 90 Р”) и данные в появившейся табличке совпадают.</expected></step>
+<step>
+<index>6</index><content>Удалить последние два пункта из списка, нажав на “Х” у соответствующих позиций
+![](index.php?/attachments/get/4534)
+</content><expected>Пункты Slurm “0.2 л 70 Р” и Slurm “0.5 л 90 Р” удалены. Список состоит из трех пунктов.</expected></step>
+<step>
+<index>7</index><content>В колонке Nuka-Cola нажать на кнопку “1 л 85 Р” и проверить правильность отображения данных в списке.</content><expected>В табличку добавляется пункт Nuka-Cola “1 л 85 Р”. Данные с кнопки выбора напитка (Nuka-Cola “1 л 85 Р”) и данные в появившейся табличке совпадают.</expected></step>
+<step>
+<index>8</index><content>В колонке Slurm  нажать на кнопку “1 л 110 Р” и проверить правильность отображения данных в списке. </content><expected>В табличку добавляется пункт Slurm “1 л 110 Р”. Данные с кнопки выбора напитка (Slurm “1 л 110 Р”) и данные в появившейся табличке совпадают.</expected></step>
+</steps_separated>
+									</custom>
+							</case>
+												
+						<case>
+				<id>C4599</id>
+				<title>Проверка возможности выбрать каждый напиток на розлив</title>
+												<template>Test Case (Steps)</template>
+																<type>Functional</type>
+																<priority>Critical</priority>
+																<estimate></estimate>
+																								<references></references> 
+																				<custom>
+										<automation_type><id>0</id><value> None</value></automation_type>
+										<preconds>Очистить список заказов, закрыв и снова открыв программу</preconds>
+										<steps_separated><step>
+<index>1</index><content>В колонке Nuka-Cola нажать на “V” в пункте “купить на розлив”.
+![](index.php?/attachments/get/4535)
+</content><expected>Для колонки Nuka-Cola открылось выпадающее меня с ползунком для выбора объема от 0,2 до 10 литров, пунктом &quot;цена со скидкой&quot; и зеленой кнопкой &quot;Готово&quot;
+![](index.php?/attachments/get/4536)
+</expected></step>
+<step>
+<index>2</index><content>В открывшемся меню с помощью ползунка выбрать объем 0.2 л, нажать “Готово” и проверить правильность отображения данных в списке.</content><expected>Поле с изображением пустого столика и надписью &quot;Этот столик еще ничего не заказал&quot; меняется на табличку с выбранным напитком и его параметрами. Данные из пункта &quot;купить на розлив&quot; (Nuka-Cola “0.2 л 50 Р”) и данные в появившейся табличке совпадают.</expected></step>
+<step>
+<index>3</index><content>Выбрать с помощью ползунка объем 5 л, нажать “Готово” и проверить правильность отображения данных в списке.</content><expected>В табличку добавляется пункт Nuka-Cola 5 л. Данные из пункта &quot;купить на розлив&quot; и данные в появившейся табличке совпадают.</expected></step>
+<step>
+<index>4</index><content>Выбрать с помощью ползунка объем 10 л, нажать “Готово” и проверить правильность отображения данных в списке</content><expected>В табличку добавляется пункт Nuka-Cola 10 л. Данные из пункта &quot;купить на розлив&quot; и данные в появившейся табличке совпадают.</expected></step>
+<step>
+<index>5</index><content>В колонке Slurm нажать на “V” в пункте “купить на розлив
+![](index.php?/attachments/get/4537)
+</content><expected>Для колонки Slurm открылось выпадающее меня с ползунком для выбора объема от 0,2 до 10 литров, пунктом &quot;цена со скидкой&quot; и зеленой кнопкой &quot;Готово&quot;
+![](index.php?/attachments/get/4538)
+</expected></step>
+<step>
+<index>6</index><content>Повторить шаги 2 и 3 для колонки с напитком Slurm</content><expected>В табличку добавляется пункт Slurm 0.2 и 5 л. Данные из пункта &quot;купить на розлив&quot; и данные в появившейся табличке совпадают.</expected></step>
+<step>
+<index>7</index><content>Удалить последние три пункта из списка, нажав на “Х” у соответствующих позиций.</content><expected>Пункты &quot;Nuka-Cola 10 л&quot;, &quot;Slurm 0.2 л&quot; и &quot;Slurm 5 л&quot; удалены из списка заказов.</expected></step>
+<step>
+<index>8</index><content>Выбрать для напитка Slurm с помощью ползунка объем 10 л, нажать “Готово” и проверить правильность отображения данных в списке</content><expected>В табличку добавляется пункт Slurm 10 л. Данные из пункта &quot;купить на розлив&quot; и данные в появившейся табличке совпадают.</expected></step>
+</steps_separated>
+									</custom>
+							</case>
+												
+						<case>
+				<id>C4600</id>
+				<title>Проверка возможности добавить один напиток в список и перейти к оплате</title>
+												<template>Test Case (Steps)</template>
+																<type>Functional</type>
+																<priority>Critical</priority>
+																<estimate></estimate>
+																								<references></references> 
+																				<custom>
+										<automation_type><id>0</id><value> None</value></automation_type>
+										<preconds>Очистить список заказов, закрыв и снова открыв программу</preconds>
+										<steps_separated><step>
+<index>1</index><content>В колонке Coffee нажать на кнопку “0.2 л 50 Р” </content><expected>Поле с изображением пустого столика и надписью &quot;Этот столик еще ничего не заказал&quot; меняется на табличку с выбранным напитком и его параметрами. </expected></step>
+<step>
+<index>2</index><content>Проверить наличие желаемого напитка в списке</content><expected>Выбранный напиток присутствует в списке. Данные с кнопки выбора напитка (Coffee “0.2 л 50 Р”) и данные в появившейся табличке совпадают.</expected></step>
+<step>
+<index>3</index><content>Нажать на кнопку “Перейти к оплате”</content><expected>Открывается второе окно приложения с оплатой заказа.
+![](index.php?/attachments/get/4539)
+</expected></step>
+</steps_separated>
+									</custom>
+							</case>
+												
+						<case>
+				<id>C4601</id>
+				<title>Проверка возможности формирования очереди из нескольких напитков (3 штуки) установленного объема и дальнейшего перехода к оплате</title>
+												<template>Test Case (Steps)</template>
+																<type>Functional</type>
+																<priority>High</priority>
+																<estimate></estimate>
+																								<references></references> 
+																				<custom>
+										<automation_type><id>0</id><value> None</value></automation_type>
+										<preconds>Очистить список заказов, закрыв и снова открыв программу</preconds>
+										<steps_separated><step>
+<index>1</index><content>В колонке Coffee нажать на кнопку “0.2 л 50 Р” и проверить наличие выбранного напитка в списке заказов</content><expected>Поле с изображением пустого столика и надписью &quot;Этот столик еще ничего не заказал&quot; меняется на табличку с выбранным напитком и его параметрами. Выбранный напиток присутствует в списке. Данные с кнопки выбора напитка (Coffee “0.2 л 50 Р”) и данные в появившейся табличке совпадают.</expected></step>
+<step>
+<index>2</index><content>В колонке Nuka-Cola нажать на кнопку “0.5 л 70 Р” и проверить наличие выбранного напитка в списке заказов</content><expected>В табличку заказов добавляется пункт Nuka-Cola “0.5 л 70 Р”. Данные с кнопки выбора напитка (Nuka-Cola “0.5 л 70 Р”) и данные в появившейся табличке совпадают.</expected></step>
+<step>
+<index>3</index><content>В колонке Slurm  нажать на кнопку “1 л 110 Р” и проверить наличие выбранного напитка в списке заказов</content><expected>В табличку заказов добавляется пункт Slurm “1 л 110 Р”. Данные с кнопки выбора напитка (Slurm “1 л 110 Р”) и данные в появившейся табличке совпадают.</expected></step>
+<step>
+<index>4</index><content>Проверить наличие желаемых напитков в списке</content><expected>Все выбранные напитки присутствуют в списке заказов</expected></step>
+<step>
+<index>5</index><content>Нажать на кнопку “Перейти к оплате”.</content><expected>Открывается второе окно приложения с возможностью оплатить заказ.</expected></step>
+</steps_separated>
+									</custom>
+							</case>
+												
+						<case>
+				<id>C4602</id>
+				<title>Проверка возможности формирования очереди из нескольких напитков (5 штук) установленного объема и дальнейшего перехода к оплате.</title>
+												<template>Test Case (Steps)</template>
+																<type>Functional</type>
+																<priority>High</priority>
+																<estimate></estimate>
+																								<references></references> 
+																				<custom>
+										<automation_type><id>0</id><value> None</value></automation_type>
+										<preconds>Очистить список заказов, закрыв и снова открыв программу</preconds>
+										<steps_separated><step>
+<index>1</index><content>В колонке Coffee нажать на кнопку “0.2 л 50 Р” </content><expected>Поле с изображением пустого столика и надписью &quot;Этот столик еще ничего не заказал&quot; меняется на табличку с выбранным напитком и его параметрами. Данные с кнопки выбора напитка (Coffee “0.2 л 50 Р”) и данные в появившейся табличке совпадают.</expected></step>
+<step>
+<index>2</index><content>В колонке Nuka-Cola нажать на кнопку “0.5 </content><expected>В табличку добавляется пункт Nuka-Cola “0.5 л 70 Р”. Данные с кнопки выбора напитка (Nuka-Cola “0.5 л 70 Р”) и данные в появившейся табличке совпадают.</expected></step>
+<step>
+<index>3</index><content>В колонке Slurm  нажать на кнопку “1 л 110 Р” </content><expected>В табличку добавляется пункт Slurm “1 л 110 Р”. Данные с кнопки выбора напитка (Slurm “1 л 110 Р”) и данные в появившейся табличке совпадают.</expected></step>
+<step>
+<index>4</index><content>В колонке Nuka-Cola нажать на “V” в пункте “купить на розлив”</content><expected>Для колонки Nuka-Cola открылось выпадающее меня с ползунком для выбора объема от 0,2 до 10 литров, пунктом &quot;цена со скидкой&quot; и зеленой кнопкой &quot;Готово&quot;</expected></step>
+<step>
+<index>5</index><content>Выбрать с помощью ползунка объем 5 л и нажать кнопку “Готово”.</content><expected>В табличку добавляется пункт “Nuka-Cola 5л”. Данные из пункта &quot;купить на розлив&quot; и данные в появившейся табличке совпадают.</expected></step>
+<step>
+<index>6</index><content>В колонке Slurm нажать на “V” в пункте “купить на розлив”.</content><expected>Для колонки Slurm открылось выпадающее меня с ползунком для выбора объема от 0,2 до 10 литров, пунктом &quot;цена со скидкой&quot; и зеленой кнопкой &quot;Готово&quot;</expected></step>
+<step>
+<index>7</index><content>Выбрать с помощью ползунка объем 5 л и нажать кнопку “Готово”.</content><expected>В табличку добавляется пункт “Slurm 5л”. Данные из пункта &quot;купить на розлив&quot; и данные в появившейся табличке совпадают.</expected></step>
+<step>
+<index>8</index><content>Проверить наличие желаемых напитков в списке</content><expected>В списке есть все выбранные напитки.</expected></step>
+<step>
+<index>9</index><content>Нажать на кнопку “Перейти к оплате”.</content><expected>Открывается второе окно приложения с возможностью оплатить заказ.</expected></step>
+</steps_separated>
+									</custom>
+							</case>
+												
+						<case>
+				<id>C4603</id>
+				<title>Проверка возможности формирования очереди из нескольких одинаковых напитков (4 штуки) установленного объема и дальнейшего перехода к оплате.</title>
+												<template>Test Case (Steps)</template>
+																<type>Functional</type>
+																<priority>Medium</priority>
+																<estimate></estimate>
+																								<references></references> 
+																				<custom>
+										<automation_type><id>0</id><value> None</value></automation_type>
+										<preconds>Очистить список заказов, закрыв и снова открыв программу</preconds>
+										<steps_separated><step>
+<index>1</index><content>В колонке Coffee нажать на кнопку “0.2 л 50 Р” четыре раза</content><expected>Поле с изображением пустого столика и надписью &quot;Этот столик еще ничего не заказал&quot; меняется на табличку с четырьмя выбранными напитками и их параметрами. Данные с кнопки выбора напитка (Coffee “0.2 л 50 Р”) и данные в появившейся табличке совпадают.</expected></step>
+<step>
+<index>2</index><content>Проверить наличие желаемых напитков в списке</content><expected>Все четыре выбранных напитка присутствуют в списке</expected></step>
+<step>
+<index>3</index><content>Нажать на кнопку “Перейти к оплате”.</content><expected>Открывается второе окно приложения с возможностью оплатить заказ</expected></step>
+</steps_separated>
+									</custom>
+							</case>
+												
+						<case>
+				<id>C4604</id>
+				<title>Проверка невозможности формирования очереди из нескольких напитков (6 штук) установленного объема</title>
+												<template>Test Case (Steps)</template>
+																<type>Functional</type>
+																<priority>Critical</priority>
+																<estimate></estimate>
+																								<references></references> 
+																				<custom>
+										<automation_type><id>0</id><value> None</value></automation_type>
+										<preconds>Очистить список заказов, закрыв и снова открыв программу</preconds>
+										<steps_separated><step>
+<index>1</index><content>В колонке Coffee нажать на кнопку “0.2 л 50 Р” два раза</content><expected>Поле с изображением пустого столика и надписью &quot;Этот столик еще ничего не заказал&quot; меняется на табличку с двумя выбранными напитками и их параметрами (Coffee “0.2 л 50 Р”).</expected></step>
+<step>
+<index>2</index><content>В колонке Nuka-Cola нажать на кнопку “0.5 л 70 Р” два раза</content><expected>В табличку списка заказов добавлены два напитка (Nuka-Cola “0.5 л 70 Р”).</expected></step>
+<step>
+<index>3</index><content>В колонке Slurm нажать на кнопку “1 л 110 Р” два раза</content><expected>В табличку списка заказов добавлен один Slurm “1 л 110 Р”. Второй такой же напиток программа не дает добавить.</expected></step>
+</steps_separated>
+									</custom>
+							</case>
+												
+						<case>
+				<id>C4605</id>
+				<title>Проверка правильности расчета цены и применения скидки для напитков на розлив</title>
+												<template>Test Case (Steps)</template>
+																<type>Functional</type>
+																<priority>Critical</priority>
+																<estimate></estimate>
+																								<references></references> 
+																				<custom>
+										<automation_type><id>0</id><value> None</value></automation_type>
+										<preconds>Очистить список заказов, закрыв и снова открыв программу
+
+![](index.php?/attachments/get/4540)
+</preconds>
+										<steps_separated><step>
+<index>1</index><content>В колонке Nuka-Cola нажать на “V” в пункте “купить на розлив”</content><expected>Для колонки Nuka-Cola открылось выпадающее меня с ползунком для выбора объема от 0,2 до 10 литров, пунктом &quot;цена со скидкой&quot; и зеленой кнопкой &quot;Готово&quot;</expected></step>
+<step>
+<index>2</index><content>В колонке Slurm нажать на “V” в пункте “купить на розлив”</content><expected>Для колонки Slurm открылось выпадающее меня с ползунком для выбора объема от 0,2 до 10 литров, пунктом &quot;цена со скидкой&quot; и зеленой кнопкой &quot;Готово&quot;</expected></step>
+<step>
+<index>3</index><content>Для напитка Nuka-Cola с помощью ползунка установить значение объема соответствующее первой ячейке в колонке “Объем” в таблице, представленной в Предусловиях (Preconditions).</content><expected>Для напитка Nuka-Cola установлено значение объема соответствующее первой ячейке в колонке “Объем” в таблице, представленной в Предусловиях (Preconditions), т.е. &quot;Nuka-Cola 0.2 50 Р&quot;</expected></step>
+<step>
+<index>4</index><content>Нажать “Готово”, сравнить значение в графе ”Цена” таблицы со значением, которое формирует программа в графе “цена со скидкой” и в итоговом списке.</content><expected>Выбранный напиток добавлен в список заказов. Цена из таблицы в Предусловиях, цена в графе &quot;цена со скидкой&quot; и цена в списке заказов совпадают между собой.</expected></step>
+<step>
+<index>5</index><content>Проделать шаги 3 и 4 для следующего объема. (При невозможности добавить напиток в список удалить ненужные напитки с помощью “Х”) </content><expected>Для всех представленных в таблице объемов напитка Nuka-Cola, выбранный объем напитка добавлен в список заказов. Цена из таблицы в Предусловиях, цена в графе &quot;цена со скидкой&quot; и цена в списке заказов совпадают между собой.</expected></step>
+<step>
+<index>6</index><content>Проделать шаги 3-5 для напитка Slurm.</content><expected>Для всех представленных в таблице объемов напитка Slurm, выбранный объем напитка добавлен в список заказов. Цена из таблицы в Предусловиях, цена в графе &quot;цена со скидкой&quot; и цена в списке заказов совпадают между собой.</expected></step>
+</steps_separated>
+									</custom>
+							</case>
+												
+						<case>
+				<id>C4606</id>
+				<title>Проверка возможности удаления всех позиций из списка покупок</title>
+												<template>Test Case (Steps)</template>
+																<type>Functional</type>
+																<priority>High</priority>
+																<estimate></estimate>
+																								<references></references> 
+																				<custom>
+										<automation_type><id>0</id><value> None</value></automation_type>
+										<preconds>Очистить список заказов, закрыв и снова открыв программу</preconds>
+										<steps_separated><step>
+<index>1</index><content>В колонке Coffee нажать на кнопку “0.2 л 50 Р”.</content><expected>Поле с изображением пустого столика и надписью &quot;Этот столик еще ничего не заказал&quot; меняется на табличку с выбранным напитком и его параметрами (Coffee “0.2 л 50 Р”)</expected></step>
+<step>
+<index>2</index><content>В колонке Nuka-Cola нажать на кнопку “0.5 л 70 Р”.</content><expected>В табличку добавляется пункт Nuka-Cola “0.5 л 70 Р”. </expected></step>
+<step>
+<index>3</index><content>В колонке Slurm  нажать на кнопку “1 л 110 Р”</content><expected>В табличку добавляется пункт Slurm “1 л 110 Р”. </expected></step>
+<step>
+<index>4</index><content>Проверить наличие желаемых напитков в списке</content><expected>Все выбранные напитки добавлены в список заказов</expected></step>
+<step>
+<index>5</index><content>Удалить каждый напиток из списка, нажав на “Х” справа от цены
+![](index.php?/attachments/get/4541)
+</content><expected>Все выбранные напитки удалены из списка заказов</expected></step>
+</steps_separated>
+									</custom>
+							</case>
+												
+						<case>
+				<id>C4607</id>
+				<title>Проверка возможности оплаты с помощью каждой монеты/купюры</title>
+												<template>Test Case (Steps)</template>
+																<type>Functional</type>
+																<priority>Critical</priority>
+																<estimate></estimate>
+																								<references></references> 
+																				<custom>
+										<automation_type><id>0</id><value> None</value></automation_type>
+										<preconds>Очистить список заказов, закрыв и снова открыв программу
+
+![](index.php?/attachments/get/4542)
+</preconds>
+										<steps_separated><step>
+<index>1</index><content>Из таблицы, представленной в Предусловиях, выбрать нужный объем из заказа 1 и нажать &quot;Готово&quot;</content><expected>В список заказов добавлен заказ Nuka-Cola 0.4 л.</expected></step>
+<step>
+<index>2</index><content>Проверить наличие желаемых напитков в списке и правильность стоимости.</content><expected>Цена в таблице из Предусловий, цена в графе &quot;цена со скидкой&quot; и цена в списке заказов совпадают.</expected></step>
+<step>
+<index>3</index><content>Нажать кнопку “Перейти к оплате”</content><expected>Открылось второй окно приложения с возможностью оплаты заказа</expected></step>
+<step>
+<index>4</index><content>На открывшемся экране еще раз проверить сделанный заказ</content><expected>Данные, представленные на экране оплаты, совпадают со сделанным заказом.</expected></step>
+<step>
+<index>5</index><content>Нажать на значение монеты/купюры, указанной в таблице из Предусловий, в колонке “Тестируемая монета/купюра”.</content><expected>Значение монеты/купюры появилось в окне &quot;Уже внесли&quot;. Под значением внесенных средств появилась надпись &quot;МОЖНО ОПЛАТИТЬ!&quot;</expected></step>
+<step>
+<index>6</index><content>Нажать кнопку ”Оплатить”</content><expected>Открылся третий экран приложения</expected></step>
+<step>
+<index>7</index><content>На открывшемся экране проверить список покупок, итоговую сумму, сумму со скидкой, количество внесенных денег и сдачу(если есть)</content><expected>Пункты заполнены верно, оплата заказа завершена успешно</expected></step>
+<step>
+<index>8</index><content>Повторить шаги 1-7 для всех заказов из таблицы в Предусловиях</content><expected>Всеми монетами/купюрами можно совершить оплату</expected></step>
+</steps_separated>
+									</custom>
+							</case>
+												
+						<case>
+				<id>C4608</id>
+				<title>Оплата заказа, состоящего из стандартных позиций</title>
+												<template>Test Case (Steps)</template>
+																<type>Functional</type>
+																<priority>Critical</priority>
+																<estimate></estimate>
+																								<references></references> 
+																				<custom>
+										<automation_type><id>0</id><value> None</value></automation_type>
+										<preconds>Очистить список заказов, закрыв и снова открыв программу</preconds>
+										<steps_separated><step>
+<index>1</index><content>В колонке Coffee нажать на кнопку “0.2 л 50 Р”.</content><expected>Поле с изображением пустого столика и надписью &quot;Этот столик еще ничего не заказал&quot; меняется на табличку с выбранным напитком и его параметрами (Coffee “0.2 л 50 Р”)</expected></step>
+<step>
+<index>2</index><content>В колонке Nuka-Cola нажать на кнопку “0.5 л 70 Р”.</content><expected>В табличку добавляется пункт Nuka-Cola “0.5 л 70 Р”. </expected></step>
+<step>
+<index>3</index><content>В колонке Slurm  нажать на кнопку “1 л 110 Р”.</content><expected>В табличку добавляется пункт Slurm “1 л 110 Р”. </expected></step>
+<step>
+<index>4</index><content>Проверить наличие желаемых напитков в списке.
+</content><expected>Выбранные напитки находятся в списке заказов</expected></step>
+<step>
+<index>5</index><content>Нажать кнопку “Перейти к оплате”
+</content><expected>Открылось второе окно приложения с возможностью оплаты заказа</expected></step>
+<step>
+<index>6</index><content>В открывшемся окне проверить еще раз заказ и сумму, которую нужно оплатить (230 Р).
+</content><expected>Заказ и сумма верны.</expected></step>
+<step>
+<index>7</index><content>Нажать на купюру 500 Р, нажать “Оплатить”
+</content><expected>В окне &quot;Уже внесли&quot; появилось значение 500Р, внизу надпись &quot;МОЖНО ОПЛАТИТЬ!&quot;.
+Открылся третий экран приложения.</expected></step>
+<step>
+<index>8</index><content>Проверить список покупок, итоговую сумму, сумму со скидкой, количество внесенных денег и сдачу (270 Р)</content><expected>На третьем экране приложения список покупок, итоговую сумму, сумму со скидкой, количество внесенных денег и сдачу (270 Р) верны.</expected></step>
+</steps_separated>
+									</custom>
+							</case>
+												
+						<case>
+				<id>C4609</id>
+				<title>Оплата заказа, состоящего из разных напитков на розлив (от 2 до 4,9 литров включительно)</title>
+												<template>Test Case (Steps)</template>
+																<type>Functional</type>
+																<priority>High</priority>
+																<estimate></estimate>
+																								<references></references> 
+																				<custom>
+										<automation_type><id>0</id><value> None</value></automation_type>
+										<preconds>Очистить список заказов, закрыв и снова открыв программу
+![](index.php?/attachments/get/4543)
+</preconds>
+										<steps_separated><step>
+<index>1</index><content>В колонке Nuka-Cola нажать на кнопку “V” в графе “купить на розлив”</content><expected>Для колонки Nuka-Cola открылось выпадающее меня с ползунком для выбора объема от 0,2 до 10 литров, пунктом &quot;цена со скидкой&quot; и зеленой кнопкой &quot;Готово&quot;</expected></step>
+<step>
+<index>2</index><content>Выбрать каждый объем, указанный в таблице, приведенной в Предусловиях, для напитка Nuka-Cola с помощью ползунка. Нажать для каждого выбранного кнопку “Готово”. </content><expected>Три напитка Nuka-Cola объемом 2, 3.5 и 4.9 л добавлены в список заказов</expected></step>
+<step>
+<index>3</index><content>Сравнить цены указанные в таблице из Предусловий с ценой в графе “цена со скидкой” и ценой в списке</content><expected>Все три цены совпадают друг с другом</expected></step>
+<step>
+<index>4</index><content>В колонке Slurm нажать на кнопку “V” в графе “купить на розлив”.</content><expected>Для колонки Slurm открылось выпадающее меня с ползунком для выбора объема от 0,2 до 10 литров, пунктом &quot;цена со скидкой&quot; и зеленой кнопкой &quot;Готово&quot;</expected></step>
+<step>
+<index>5</index><content>Выбрать каждый объем, указанный в таблице, приведенной в Предусловиях, для напитка Slurm с помощью ползунка. Нажать для каждого выбранного кнопку “Готово”</content><expected>Три напитка Slurm объемом 2, 3.5 и 4.9 л добавлены в список заказов</expected></step>
+<step>
+<index>6</index><content>Сравнить цены указанные в таблице из Предусловий с ценой в графе “цена со скидкой” и ценой в списке</content><expected>Все три цены совпадают друг с другом</expected></step>
+<step>
+<index>7</index><content>Проверить сформированный заказ (сумма 1926 Р)</content><expected>Заказ верен, сумма составляет 1926 Р</expected></step>
+<step>
+<index>8</index><content>Нажать кнопку “Перейти к оплате”</content><expected>Открылось второе окно приложения с возможностью оплаты</expected></step>
+<step>
+<index>9</index><content>В открывшемся окне проверить еще раз заказ и сумму, которую нужно оплатить (1926 Р).</content><expected>Заказ верен, сумма составляет 1926 Р</expected></step>
+<step>
+<index>10</index><content>Нажать на купюру 1000 Р дважды, нажать “Оплатить”</content><expected>В поле &quot;Уже внесли&quot; появилось значение 2000 Р, появилась надпись &quot;МОЖНО ОПЛАТИТЬ!&quot;. 
+При нажатии на кнопку &quot;Оплатить&quot; произошел переход на третий экран приложения.</expected></step>
+<step>
+<index>11</index><content>Проверить список покупок, итоговую сумму, сумму со скидкой, количество внесенных денег и сдачу (74 Р)</content><expected>На третьем экране приложения список покупок, итоговую сумму, сумму со скидкой, количество внесенных денег и сдачу (74 Р) верны.</expected></step>
+</steps_separated>
+									</custom>
+							</case>
+												
+						<case>
+				<id>C4610</id>
+				<title>Оплата заказа, состоящего из разных напитков на розлив (от 5 до 10 литров включительно)</title>
+												<template>Test Case (Steps)</template>
+																<type>Functional</type>
+																<priority>High</priority>
+																<estimate></estimate>
+																								<references></references> 
+																				<custom>
+										<automation_type><id>0</id><value> None</value></automation_type>
+										<preconds>Очистить список заказов, закрыв и снова открыв программу
+
+![](index.php?/attachments/get/4544)
+</preconds>
+										<steps_separated><step>
+<index>1</index><content>В колонке Nuka-Cola нажать на кнопку “V” в графе “купить на розлив”</content><expected>Для колонки Nuka-Cola открылось выпадающее меня с ползунком для выбора объема от 0,2 до 10 литров, пунктом &quot;цена со скидкой&quot; и зеленой кнопкой &quot;Готово&quot;</expected></step>
+<step>
+<index>2</index><content>Выбрать каждый объем, указанный в таблице, приведенной в Предусловиях, для напитка Nuka-Cola с помощью ползунка. Нажать для каждого выбранного кнопку “Готово”.</content><expected>Три напитка Nuka-Cola объемом 5, 7 и 10 л добавлены в список заказов</expected></step>
+<step>
+<index>3</index><content>Сравнить цены указанные в таблице из Предусловий с ценой в графе “цена со скидкой” и ценой в списке</content><expected>Все три цены совпадают друг с другом</expected></step>
+<step>
+<index>4</index><content>В колонке Slurm нажать на кнопку “V” в графе “купить на розлив”.</content><expected>Для колонки Slurm открылось выпадающее меня с ползунком для выбора объема от 0,2 до 10 литров, пунктом &quot;цена со скидкой&quot; и зеленой кнопкой &quot;Готово&quot;</expected></step>
+<step>
+<index>5</index><content>Выбрать каждый объем, указанный в таблице, приведенной в Предусловиях, для напитка Slurm с помощью ползунка. Нажать для каждого выбранного кнопку “Готово”</content><expected>Три напитка Slurm объемом 5, 7 и 10 л добавлены в список заказов</expected></step>
+<step>
+<index>6</index><content>Сравнить цены указанные в таблице из Предусловий с ценой в графе “цена со скидкой” и ценой в списке</content><expected>Все три цены совпадают друг с другом</expected></step>
+<step>
+<index>7</index><content>Проверить сформированный заказ (сумма 3860 Р)</content><expected>Заказ верен, сумма составляет 3860 Р</expected></step>
+<step>
+<index>8</index><content>Нажать кнопку “Перейти к оплате”</content><expected>Открылось второе окно приложения с возможностью оплаты</expected></step>
+<step>
+<index>9</index><content>В открывшемся окне проверить еще раз заказ и сумму, которую нужно оплатить (3860 Р)</content><expected>Заказ верен, сумма составляет 3860 Р</expected></step>
+<step>
+<index>10</index><content>Нажать на купюру 1000 Р четыре раза, нажать “Оплатить”</content><expected>В поле &quot;Уже внесли&quot; появилось значение 4000 Р, появилась надпись &quot;МОЖНО ОПЛАТИТЬ!&quot;.
+При нажатии на кнопку &quot;Оплатить&quot; произошел переход на третий экран приложения.</expected></step>
+<step>
+<index>11</index><content>Проверить список покупок, итоговую сумму, сумму со скидкой, количество внесенных денег и сдачу (140 Р)</content><expected>На третьем экране приложения список покупок, итоговую сумму, сумму со скидкой, количество внесенных денег и сдачу (140 Р) верны.</expected></step>
+</steps_separated>
+									</custom>
+							</case>
+												
+						<case>
+				<id>C4611</id>
+				<title>Оплата заказа с применением промо-кода</title>
+												<template>Test Case (Steps)</template>
+																<type>Functional</type>
+																<priority>Medium</priority>
+																<estimate></estimate>
+																								<references></references> 
+																				<custom>
+										<automation_type><id>0</id><value> None</value></automation_type>
+										<preconds>Очистить список заказов, закрыв и снова открыв программу
+
+
+![](index.php?/attachments/get/4545)
+</preconds>
+										<steps_separated><step>
+<index>1</index><content>На первом экране ввести данные из таблицы в Предусловиях, колонка “Объем” для заказа 1</content><expected>В списке заказов приложения добавлены напитки объемом из таблицы в Предусловиях</expected></step>
+<step>
+<index>2</index><content>Проверить получившийся заказ и сравнить его сумму с значением в колонке “Сумма” из таблицы. Нажать “Перейти к оплате”</content><expected>Значения сумм одинаковые, при нажатии на кнопку &quot;Перейти к оплате&quot; открылся второй экран приложения</expected></step>
+<step>
+<index>3</index><content>На втором экране в поле “Промокод” ввести 5555 и нажать “Применить”</content><expected>Промокод применен, сумма заказа изменилась в меньшую сторону</expected></step>
+<step>
+<index>4</index><content>Ввести купюру соответствующего значения из колонки  “Купюра” таблицы из Предусловий. Нажать “Оплатить”</content><expected>Приложение перешло на третий экран </expected></step>
+<step>
+<index>5</index><content>Проверить список покупок, итоговую сумму, сумму со скидкой, количество внесенных денег и сдачу (колонка “Сдача” таблицы)</content><expected>На третьем экране приложения список покупок, итоговая сумма, сумма со скидкой, количество внесенных денег и сдача (колонка “Сдача” таблицы) сходятся с представленными в таблице из Предусловий</expected></step>
+<step>
+<index>6</index><content>Повторить шаги 1-5 для заказов 2 и 3. Для них ввод объема осуществляется с помощью кнопки “V ” в графе “купить на розлив”.</content><expected>Для заказов 2 и 3 на третьем экране приложения список покупок, итоговая сумма, сумма со скидкой, количество внесенных денег и сдача (колонка “Сдача” таблицы) сходятся с представленными в таблице из Предусловий</expected></step>
+</steps_separated>
+									</custom>
+							</case>
+								</cases>
+							</section>
+	</sections>
+</suite>
