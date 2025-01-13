@@ -1,0 +1,23 @@
+{
+  "data": {
+    "ProfileName": "Пациенты на ДН",
+    "Person": {
+      "masterPersonId": 15444593,
+      "mpioip": "401860505416",
+      "enp": "1346F1740534AE936C380A178105522436AAD58E8EF9A6C250B8E9274076F0D0",
+      "birthDate": "1958-12-28",
+      "deathDate": null,
+      "polId": 1,
+      "polCd": 1,
+      "polSrcId": 1,
+      "polName": "Мужской",
+      "polSys": "urn:foms:V005",
+      "polVers": "3.0",
+      "dn": null,
+      "dnp": null,
+      "yearBirth": 1958,
+      "planYearDisp": 2023,
+      "planYearCd": 0
+    }
+  }
+}
